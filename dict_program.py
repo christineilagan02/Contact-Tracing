@@ -57,73 +57,81 @@ menu_list = ["     1 -> Append a new item",
              "     3 -> Exit (y/n)"]
 for item in menu_list:
     print(item)
-print()
-print("*---+---+---+---*---+---+---+---*")
-print()
-user_choice = int(input("  Which option do you prefer? "))    
-print()
-print("*---+---+---+---*---+---+---+---*")
-print()
 
-# Option 1: Ask personal data for contact tracing (Listed are sample only, add more)
-if user_choice == 1:
-    print("Please fill out the following details.")
-    user_name = input("Name: ").title()
-    user_age = int(input("Age: "))
-    
-    user_gender = str(input("Gender (Male/Female): ")).title()
-    valid_gender = ["Male", "Female"]
-    while user_gender not in valid_gender:
-        print("Only type Male and Female")
-        user_gender = input("Gender: ")
 
-    user_address = input("Address: ").title()
-    user_email = input("Email: ")
-    while "@" not in user_email:
-        print("Your email address must have '@' in it.")
+while True:
+    print()
+    print("*---+---+---+---*---+---+---+---*")
+    print()
+    user_choice = int(input("  Which option do you prefer? "))    
+    print()
+    print("*---+---+---+---*---+---+---+---*")
+    print()
+    # Option 1: Ask personal data for contact tracing (Listed are sample only, add more)
+    if user_choice == 1:
+        print("Please fill out the following details.")
+        user_name = input("Name: ").title()
+        user_age = int(input("Age: "))
+        
+        user_gender = str(input("Gender (Male/Female): ")).title()
+        valid_gender = ["Male", "Female"]
+        while user_gender not in valid_gender:
+            print("Only type Male and Female")
+            user_gender = input("Gender: ")
+
+        user_address = input("Address: ").title()
         user_email = input("Email: ")
-        if ".com" not in user_email:
-            print("Your email address must have '.com' in it.")
-            user_email = input("Email: ")
-    while ".com" not in user_email:
-        print("Your email address must have '.com' in it.")
-        user_email = input("Email: ")
-        if "@" not in user_email:
+        while "@" not in user_email:
             print("Your email address must have '@' in it.")
             user_email = input("Email: ")
-    user_cpnumber = input("Phone Number: ")
-    if len(user_cpnumber) < 11:
-        print("Your phone number must be 11 digits.")
+            if ".com" not in user_email:
+                print("Your email address must have '.com' in it.")
+                user_email = input("Email: ")
+        while ".com" not in user_email:
+            print("Your email address must have '.com' in it.")
+            user_email = input("Email: ")
+            if "@" not in user_email:
+                print("Your email address must have '@' in it.")
+                user_email = input("Email: ")
         user_cpnumber = input("Phone Number: ")
-        if len(user_cpnumber) > 11:
+        if len(user_cpnumber) < 11:
             print("Your phone number must be 11 digits.")
             user_cpnumber = input("Phone Number: ")
-    
-    print()
-    print("*---+---+---+---*---+---+---+---*")
-    print()
-    
-    # Storing info
-    dict_info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
-    print("Info Saved!")
-    
-# Option 2: Search, ask name then display the record
-if user_choice == 2:
-    print("     Please enter the name \n     to display the record.")
-    print()
-    user_want = input("\t>> ").title()
-    print()
-    print("*---+---+---+---*---+---+---+---*")
-    print()
-    input_name = dict_info.get(user_want)
-    print("\tThis is", user_want, "record.\n")
-    for info in input_name:
-        print("\t", info)
-    
-    print()
-    print("*---+---+---+---*---+---+---+---*")
-    print()
-    
+            if len(user_cpnumber) > 11:
+                print("Your phone number must be 11 digits.")
+                user_cpnumber = input("Phone Number: ")
+        
+        print()
+        print("*---+---+---+---*---+---+---+---*")
+        print()
+        
+        # Storing info
+        dict_info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
+        print("Info Saved!")
+        
+    # Option 2: Search, ask name then display the record
+    elif user_choice == 2:
+        print("     Please enter the name \n     to display the record.")
+        print()
+        user_want = input("\t>> ").title()
+        print()
+        print("*---+---+---+---*---+---+---+---*")
+        print()
+        input_name = dict_info.get(user_want)
+        print("\tThis is", user_want, "record.\n")
+        for info in input_name:
+            print("\t", info)
+        
+        print()
+        print("*---+---+---+---*---+---+---+---*")
+        print()
 
+    # Option 3: Ask the user if want to exit or retry.
 
-# Option 3: Ask the user if want to exit or retry.
+    elif user_choice == 3:
+        exit = input("Are you sure?(y/n) ").title()
+        
+        if exit == "Y":
+            import sys 
+            print ("\t\33[1m\33[93m\33[3m        You can now exit.\33[0m")
+            sys.exit("\n")
