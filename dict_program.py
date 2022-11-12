@@ -107,6 +107,7 @@ while True:
         
         # Storing info
         dict_info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
+        new_info = dict_info
         print("\t\t\33[1m\33[93m\33[3m   Info Saved!\33[0m")
         
     # Option 2: Search, ask full name then display the record
@@ -118,9 +119,9 @@ while True:
         print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
         print()
         input_name = dict_info.get(user_want)
-        print("Fullname:", user_want)
-        for info in input_name, dict_info:
-            print(str("\t\33[33mAge: \33[0m") + info[0])
+        print("\t\33[33mFullname: \33[0m", user_want)
+        for info in input_name, new_info:
+            print("\t\33[33mAge: \33[0m", info[0])
             print(str("\t\33[33mGender: \33[0m") + info[1])
             print(str("\t\33[33mAddress: \33[0m") + info[2])
             print(str("\t\33[33mEmail: \33[0m") + info[3])
