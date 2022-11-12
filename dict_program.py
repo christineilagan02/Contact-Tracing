@@ -105,10 +105,25 @@ if user_choice == 1:
     
     # Storing info
     dict_info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
-    print("Saved!")
+    print("Info Saved!")
     
-
-# Option 2: Search, ask full name then display the record
+# Option 2: Search, ask name then display the record
+if user_choice == 2:
+    print("     Please enter the name \n     to display the record.")
+    print()
+    user_want = input("\t>> ").title()
+    print()
+    print("*---+---+---+---*---+---+---+---*")
+    print()
+    input_name = dict_info.get(user_want)
+    print("\tThis is", user_want, "record.\n")
+    for info in input_name:
+        print("\t", info)
+    
+    print()
+    print("*---+---+---+---*---+---+---+---*")
+    print()
+    
 
 
 # Option 3: Ask the user if want to exit or retry.
