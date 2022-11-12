@@ -41,6 +41,13 @@
 # Exit? n
 
 #--------------------------------
+# Dictionary
+info = {
+    "Jiya" : ["19", "Male", "Antipolo", "jiya17@gmail.com", "0912372672541"],
+    "Jelenie" : ["21", "Female", "Bulacan", "jelenzie90@gmail.com", "09925382417"],
+    "Tine" : ["18", "Female", "Mindoro", "tin02@gmail.com", "096782419017"]
+}
+
 # Display a menu of options
 print()
 print("*---+---+---+--MENU--+---+---+---*")
@@ -53,8 +60,18 @@ for item in menu_list:
 print()
 print("*---+---+---+--MENU--+---+---+---*")
 print()
-input("Which option do you prefer? ")    
+user_choice = int(input("Which option do you prefer? "))    
+
 # Option 1: Ask personal data for contact tracing (Listed are sample only, add more)
+if user_choice == 1:
+    print("Please fill out the following details.")
+    input("Name: ")
+    int(input("Age: "))
+    input("Gender: ")
+    input("Address: ")
+    input("Email: ")
+    int(input("Phone Number: "))
+
     # Use dictionary to store the info
     # Use the full name as key
     # The value is another dictionary of personal information
