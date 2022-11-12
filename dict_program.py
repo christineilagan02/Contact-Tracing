@@ -43,95 +43,96 @@
 #--------------------------------
 # Dictionary
 dict_info = {
-    "Jiya" : ["19", "Male", "Antipolo", "jiya17@gmail.com", "0912372672541"],
-    "Jelenie" : ["21", "Female", "Bulacan", "jelenzie90@gmail.com", "09925382417"],
-    "Tininin" : ["18", "Female", "Mindoro", "tin02@gmail.com", "096782419017"]
+
 }
 
 # Display a menu of options
 print()
-print("*---+---+---+--MENU--+---+---+---*")
+print("\t\33[1m\33[33m*\33[0m---+---+---+--\33[1m\33[33mMENU\33[0m--+---+---+---\33[1m\33[33m*\33[0m")
 print()
-menu_list = ["     1 -> Append a new item", 
-             "     2 -> Search an item", 
-             "     3 -> Exit (y/n)"]
+menu_list = ["\t\33[3m\33[1m     1 => Append a new item \33[0m", 
+             "\t\33[3m\33[1m     2 => Search an item \33[0m", 
+             "\t\33[3m\33[1m     3 => Exit (y/n) \33[0m"]
 for item in menu_list:
     print(item)
 
 
 while True:
     print()
-    print("*---+---+---+---*---+---+---+---*")
+    print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
     print()
-    user_choice = int(input("  Which option do you prefer? "))    
+    user_choice = int(input("\t  Which option do you prefer? "))    
     print()
-    print("*---+---+---+---*---+---+---+---*")
+    print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
     print()
     # Option 1: Ask personal data for contact tracing (Listed are sample only, add more)
     if user_choice == 1:
-        print("Please fill out the following details.")
-        user_name = input("Name: ").title()
-        user_age = int(input("Age: "))
+        print("\tPlease fill out the following details.")
+        user_name = input("\tFull Name: ").title()
+        user_age = int(input("\tAge: "))
         
-        user_gender = str(input("Gender (Male/Female): ")).title()
+        user_gender = str(input("\tGender (Male/Female): ")).title()
         valid_gender = ["Male", "Female"]
         while user_gender not in valid_gender:
-            print("Only type Male and Female")
-            user_gender = input("Gender: ")
+            print("\tOnly type Male and Female")
+            user_gender = input("\tGender: ")
 
-        user_address = input("Address: ").title()
-        user_email = input("Email: ")
+        user_address = input("\tAddress: ").title()
+        user_email = input("\tEmail: ")
         while "@" not in user_email:
-            print("Your email address must have '@' in it.")
-            user_email = input("Email: ")
+            print("\tYour email address must have '@' in it.")
+            user_email = input("\tEmail: ")
             if ".com" not in user_email:
-                print("Your email address must have '.com' in it.")
-                user_email = input("Email: ")
+                print("\tYour email address must have '.com' in it.")
+                user_email = input("\tEmail: ")
         while ".com" not in user_email:
-            print("Your email address must have '.com' in it.")
-            user_email = input("Email: ")
+            print("\tYour email address must have '.com' in it.")
+            user_email = input("\tEmail: ")
             if "@" not in user_email:
-                print("Your email address must have '@' in it.")
-                user_email = input("Email: ")
-        user_cpnumber = input("Phone Number: ")
+                print("\tYour email address must have '@' in it.")
+                user_email = input("\tEmail: ")
+        user_cpnumber = input("\tPhone Number: ")
         if len(user_cpnumber) < 11:
-            print("Your phone number must be 11 digits.")
-            user_cpnumber = input("Phone Number: ")
+            print("\tYour phone number must be 11 digits.")
+            user_cpnumber = input("\tPhone Number: ")
             if len(user_cpnumber) > 11:
-                print("Your phone number must be 11 digits.")
-                user_cpnumber = input("Phone Number: ")
+                print("\tYour phone number must be 11 digits.")
+                user_cpnumber = input("\tPhone Number: ")
         
         print()
-        print("*---+---+---+---*---+---+---+---*")
+        print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
         print()
         
         # Storing info
         dict_info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
-        print("Info Saved!")
+        print("\t\33[1m\33[93m\33[3m   Info Saved!\33[0m")
         
-    # Option 2: Search, ask name then display the record
+    # Option 2: Search, ask full name then display the record
     elif user_choice == 2:
-        print("     Please enter the name \n     to display the record.")
+        print("\t     Please enter the name \n     to display the record.")
         print()
         user_want = input("\t>> ").title()
         print()
-        print("*---+---+---+---*---+---+---+---*")
+        print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
         print()
         input_name = dict_info.get(user_want)
         print("\tThis is", user_want, "record.\n")
         for info in input_name:
             print("\t", info)
         
-        print()
-        print("*---+---+---+---*---+---+---+---*")
-        print()
 
     # Option 3: Ask the user if want to exit or retry.
 
     elif user_choice == 3:
-        exit = input("Are you sure?(y/n) ").title()
+        exit = input("\tAre you sure?(y/n) ").title()
         
         if exit == "Y":
             import sys 
+            print()
+            print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
+            print()
             print ("\t\33[1m\33[93m\33[3m        You can now exit.\33[0m")
+            print()
+            print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
+            print()
             sys.exit("\n")
