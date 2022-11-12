@@ -65,12 +65,16 @@ user_choice = int(input("Which option do you prefer? "))
 # Option 1: Ask personal data for contact tracing (Listed are sample only, add more)
 if user_choice == 1:
     print("Please fill out the following details.")
-    input("Name: ")
-    int(input("Age: "))
-    input("Gender: ")
-    input("Address: ")
-    input("Email: ")
-    int(input("Phone Number: "))
+    user_name = input("Name: ")
+    user_age = int(input("Age: "))
+    user_gender = input("Gender: ")
+    user_address = input("Address: ")
+    user_email = input("Email: ")
+    user_cpnumber = int(input("Phone Number: "))
+    
+    info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
+    print("Saved!")
+    
 
     # Use dictionary to store the info
     # Use the full name as key
