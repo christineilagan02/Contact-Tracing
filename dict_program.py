@@ -43,9 +43,27 @@
 #--------------------------------
 # Dictionary
 dict_info = {
-    "Jiya Fuentes" : ['19', 'Male', 'Antipolo', 'jiya17@gmail.com', '0912372672541'],
-    "Jelenie Wilson" : ["21", "Female", "Bulacan", "jelenzie90@gmail.com", "09925382417"],
-    "Tininin Stanford" : ["18", "Female", "Mindoro", "tin02@gmail.com", "096782419017"]
+    "Jiya Fuentes" : {
+        'age':'19', 
+        'gender':'Male', 
+        'address':'Antipolo', 
+        'email':'jiya17@gmail.com', 
+        'phone number':'0912372672541'
+        },
+    "Jelenie Wilson" : {
+        'age':'21', 
+        'gender':'Female', 
+        'address':'Bulacan', 
+        'email':'jelenzie90@gmail.com', 
+        'phone number':'09925382417'
+        },
+    "Tininin Stanford" : {
+        'age':'18', 
+        'gender':'Female', 
+        'address':'Mindoro', 
+        'email':'tin02@gmail.com', 
+        'phone number':'096782419017'
+        }
 }
 
 # Display a menu of options
@@ -71,43 +89,48 @@ while True:
     if user_choice == 1:
         print("\t\33[1mPlease fill out the following details.\33[0m")
         user_name = input("\t\33[1mFull Name: \33[0m").title()
-        user_age = int(input("\t\33[1mAge: \33[0m"))
+        age = int(input("\t\33[1mAge: \33[0m"))
         
-        user_gender = str(input("\t\33[1mGender (Male/Female): \33[0m")).title()
+        gender = str(input("\t\33[1mGender (Male/Female): \33[0m")).title()
         valid_gender = ["Male", "Female"]
-        while user_gender not in valid_gender:
+        while gender not in valid_gender:
             print("\t\33[1mOnly type Male and Female\33[0m")
-            user_gender = input("\t\33[1mGender: \33[0m")
+            gender = input("\t\33[1mGender: \33[0m")
 
-        user_address = input("\t\33[1mAddress: \33[0m").title()
-        user_email = input("\t\33[1mEmail: \33[0m")
-        while "@" not in user_email:
+        address = input("\t\33[1mAddress: \33[0m").title()
+        email = input("\t\33[1mEmail: \33[0m")
+        while "@" not in email:
             print("\t\33[1mYour email address must have '@' in it.\33[0m")
-            user_email = input("\t\33[1mEmail: \33[0m")
-            if ".com" not in user_email:
+            email = input("\t\33[1mEmail: \33[0m")
+            if ".com" not in email:
                 print("\t\33[1mYour email address must have '.com' in it.\33[0m")
-                user_email = input("\t\33[1mEmail: \33[0m")
-        while ".com" not in user_email:
+                email = input("\t\33[1mEmail: \33[0m")
+        while ".com" not in email:
             print("\t\33[1mYour email address must have '.com' in it.\33[0m")
-            user_email = input("\t\33[1mEmail: \33[0m")
-            if "@" not in user_email:
+            email = input("\t\33[1mEmail: \33[0m")
+            if "@" not in email:
                 print("\t\33[1mYour email address must have '@' in it.\33[0m")
-                user_email = input("\t\33[1mEmail: \33[0m")
-        user_cpnumber = input("\t\33[1mPhone Number: \33[0m")
-        if len(user_cpnumber) < 11:
+                email = input("\t\33[1mEmail: \33[0m")
+        cpnumber = input("\t\33[1mPhone Number: \33[0m")
+        if len(cpnumber) < 11:
             print("\t\33[1mYour phone number must be 11 digits.\33[0m")
-            user_cpnumber = input("\t\33[1mPhone Number: \33[0m")
-            if len(user_cpnumber) > 11:
+            cpnumber = input("\t\33[1mPhone Number: \33[0m")
+            if len(cpnumber) > 11:
                 print("\t\33[1mYour phone number must be 11 digits.\33[0m")
-                user_cpnumber = input("\t\33[1mPhone Number: \33[0m")
+                cpnumber = input("\t\33[1mPhone Number: \33[0m")
         
         print()
         print("\t\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m---+---+---+---\33[1m\33[33m*\33[0m")
         print()
         
         # Storing info
-        dict_info[user_name] = [user_age, user_gender, user_address, user_email, user_cpnumber]
-        new_info = dict_info
+        new_info = dict_info[user_name] = {"age":age, 
+                                           "gender":gender, 
+                                           "address":address, 
+                                           "email":email, 
+                                           "phone number":cpnumber
+                                           }
+        info_list = dict_info.update(new_info)
         print("\t\t\33[1m\33[93m\33[3m   Info Saved!\33[0m")
         
     # Option 2: Search, ask full name then display the record
@@ -120,12 +143,12 @@ while True:
         print()
         input_name = dict_info.get(user_want)
         print("\t\33[33mFullname: \33[0m", user_want)
-        for info in input_name, new_info:
-            print("\t\33[33mAge: \33[0m", info[0])
-            print(str("\t\33[33mGender: \33[0m") + info[1])
-            print(str("\t\33[33mAddress: \33[0m") + info[2])
-            print(str("\t\33[33mEmail: \33[0m") + info[3])
-            print(str("\t\33[33mPhone Number: \33[0m") + info[4])
+        for info in input_name, dict_info:
+            print("\t\33[33mAge: \33[0m", info.get('age'))
+            print(str("\t\33[33mGender: \33[0m") + info.get('gender'))
+            print(str("\t\33[33mAddress: \33[0m") + info.get('address'))
+            print(str("\t\33[33mEmail: \33[0m") + info.get('email'))
+            print(str("\t\33[33mPhone Number: \33[0m") + info.get('phone number'))
             break
 
     # Option 3: Ask the user if want to exit or retry.
